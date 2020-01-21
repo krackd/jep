@@ -292,6 +292,10 @@ public class Jep implements Interpreter {
                 includePath = includePath.replace("\\", "\\\\");
             }
 
+            if (includePath.contains("'")) {
+                includePath = includePath.replace("'", "\\'");
+            }
+
             exec("import sys");
             exec("sys.path += '" + includePath + "'.split('"
                     + File.pathSeparator + "')");
